@@ -2,10 +2,9 @@ from llama_cpp import Llama
 import numpy as np
 
 MODEL_PATH = '/home/adam/stego/tinyllama-1.1b-chat-v1.0-q4_k_m.gguf'
-PROMPT = "Today the weather is"
 N_CTX = 2048
 
-llm = Llama(model_path = '/home/adam/stego/tinyllama-1.1b-chat-v1.0-q4_k_m.gguf',
+llm = Llama(model_path = MODEL_PATH,
             logits_all = True,
             n_gpu_layers=0,
             n_threads=2,
@@ -22,6 +21,9 @@ def top2():
     for tid in order:
         tid = int(tid)
         if tid in BAD_TOKENS:
+            continue
+        piece = llm.detokenize([tid])
+        if b"\n" in piece or b"\r" in piece:
             continue
         good.append(tid)
         if len(good) == 2:
