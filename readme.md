@@ -38,9 +38,15 @@ The model is not bundled - download a `.gguf` and put into the "/models" folder.
 ## Usage
 
 ```bash
+python SteganoSaurus.py
+```
+or
+```bash
 python encode.py
 python decode.py
 ```
+
+<img src="assets/screenshot.png" width="230" alt="SteganoSaurus.py">
 
 ## Threat model
 
