@@ -33,7 +33,7 @@ python -m venv venv && source venv/bin/activate
 pip install llama-cpp-python numpy
 ```
 
-The model is not bundled - download a `.gguf`
+The model is not bundled - download a `.gguf` and put into the "/models" folder.
 
 ## Usage
 
