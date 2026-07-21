@@ -33,7 +33,7 @@ python -m venv venv && source venv/bin/activate
 pip install llama-cpp-python numpy
 ```
 
-The model is not bundled — download a `.gguf`
+The model is not bundled - download a `.gguf`
 
 ## Usage
 
@@ -60,11 +60,12 @@ In v0.1 the prompt acts as the shared secret, and prompts are brute-forceable. R
 ## Notes
 
 - The better the model you use, the more natural the output will look.
-- Do not use this for anything other than learning and your own privacy. NEVER USE IT FOR CRIMINAL PURPOSES. AND EVEN WORSE — DO NOT SELL SOFTWARE BUILT ON THIS METHOD. PRIVACY IS A HUMAN RIGHT, NOT A PRODUCT!
+- Do not use this for anything other than learning and your own privacy. NEVER USE IT FOR CRIMINAL PURPOSES. AND EVEN WORSE - DO NOT SELL SOFTWARE BUILT ON THIS METHOD. PRIVACY IS A HUMAN RIGHT, NOT A PRODUCT!
 
 ## Reference
 
 Ziegler, Deng, Rush. *Neural Linguistic Steganography*, EMNLP 2019.
+https://aclanthology.org/D19-1115/
 
 ## License
 
