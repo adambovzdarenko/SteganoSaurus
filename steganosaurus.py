@@ -1,6 +1,3 @@
-#!/usr/bin/env python3
-"""SteganoSaurus launcher — pick encode or decode."""
-
 import subprocess
 import sys
 from pathlib import Path
@@ -23,7 +20,7 @@ BANNER = r"""
 
 
 def menu():
-    """Show options, return the chosen script name or None to quit."""
+    #Menu - pick one action
     print(BANNER)
 
     for i, (label, _) in enumerate(ACTIONS, 1):
@@ -43,7 +40,7 @@ def menu():
 
 
 def run(script):
-    """Run the chosen script with the same interpreter as this one."""
+    #Run script in the same interpreter
     path = HERE / script
 
     if not path.exists():
@@ -51,7 +48,7 @@ def run(script):
         return
 
     print()
-    # sys.executable keeps us inside the active virtualenv
+    # sys.executable keeps inside the active virtualenv
     subprocess.run([sys.executable, str(path)])
 
 

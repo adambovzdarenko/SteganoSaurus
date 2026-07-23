@@ -46,7 +46,7 @@ python encode.py
 python decode.py
 ```
 
-<img src="assets/screenshot.png" width="230" alt="SteganoSaurus.py">
+<img src="assets/screenshot.png" width="330" alt="SteganoSaurus.py">
 
 ## Threat model
 

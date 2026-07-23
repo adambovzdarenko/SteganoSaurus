@@ -6,6 +6,7 @@ MODELS_DIR = Path(__file__).parent / "models"
 
 N_CTX = 2048
 
+#Choosing the model from the "/models" folder
 def choose_model():
     files = sorted(MODELS_DIR.glob("*.gguf"))
 
@@ -29,7 +30,7 @@ def choose_model():
 
 MODEL_PATH = choose_model()
 
-
+#Don't touch unless you are 100% sure what you are doing
 llm = Llama(model_path = MODEL_PATH,
             logits_all = True,
             n_gpu_layers=0,
@@ -37,7 +38,7 @@ llm = Llama(model_path = MODEL_PATH,
             verbose=False,
             n_ctx = N_CTX)
 
-BAD_TOKENS = {llm.token_eos(), llm.token_bos()}
+BAD_TOKENS = {llm.token_eos(), llm.token_bos()} #List of tokens that script will ignore in each step
 
 def top2():
     logits = np.array(llm.scores[llm.n_tokens - 1], dtype=np.float64)
@@ -64,7 +65,7 @@ data = inp.encode(encoding="utf-8");
 inp_binary = ''.join(format(byte, '08b') for byte in data)
 print(inp_binary)
 
-llm.reset()
+llm.reset() #Resets to ignore previous context (might enable to humanize the conversation? Needs testing)
 llm.eval(llm.tokenize(sec_key.encode("utf-8")))
 
 chosen = []
