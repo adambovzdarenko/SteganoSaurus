@@ -16,7 +16,7 @@
 
 Conventional encryption produces obvious gibberish - anyone can tell something is being hidden. SteganoSaurus hides the **existence** of the message: the output is readable text that looks like plain model output.
 
-Decoding requires the same model and the same context prompt.
+Decoding requires the same model and the same context prompt, making it one of the most secure ways to encrypt the message.
 
 ## How it works
 
@@ -49,12 +49,28 @@ python decode.py
 <img src="assets/screenshot.png" width="330" alt="SteganoSaurus.py">
 
 ## Threat model
+ 
+- Works against someone who reads the cover text and has no reason to look closer.
+- Doesn't work against somebody with a bit of curiousity, especially if they have your model and passphrase - this is a natural fallback.
+If you leak your text with passphrase and model - congratulations, your stegosaurus died.
 
-**Protects against:** a passive observer who sees ordinary text and has no reason to suspect a payload.
+In other words: your machine is the evidence itself.
 
-**Does not protect against:** an adversary who knows the method and your model; traffic analysis; statistical steganalysis given many samples; coercion to reveal the prompt.
+Not covered: Traffic metadata
+> Michael Hayden:  “We Kill People Based on Metadata"
+ 
+Also worth knowing:
+ 
+- The salt is fixed for the whole project, so weak passphrases are cheap to attack in bulk.
+- One passphrase decrypts every message you ever sent with it.
+- Cover length tracks message length - no padding, so size leaks.
+- A single changed character desyncs the decoder and kills the rest of the message. Move
+  cover text as a file, never retype or paste it through something that touches whitespace.
+v0.1 has no encryption at all. The prompt is the only secret, and short English phrases
+are brute-forceable. ChaCha20 + Argon2id land in v0.2. (very soon)
+ 
+Unaudited learning project. Don't use it where getting caught matters.
 
-In v0.1 the prompt acts as the shared secret, and prompts are brute-forceable. Real cryptographic strength arrives in v0.2 with ChaCha20 and Argon2id.
 
 ## Roadmap
 
